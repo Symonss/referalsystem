@@ -97,3 +97,12 @@ def manage_agents(request):
         'agents': agents,
     }
     return render(request, 'manage-agents.html', context)
+
+
+def decider(request):
+    if request.user.is_manager:
+        return redirect('managers')
+    elif request.user.is_user:
+        return redirect('agents')
+    else:
+        return redirect('home')

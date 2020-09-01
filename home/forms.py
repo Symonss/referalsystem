@@ -12,7 +12,7 @@ class Admin_uSignUpForm(UserCreationForm):
     @transaction.atomic
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.is_admin_u = True
+        user.is_manager = True
         if commit:
             user.save()
         return user
