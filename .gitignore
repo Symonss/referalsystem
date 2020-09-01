@@ -115,7 +115,7 @@ media/
 *.db
 *.pid
 # django migrations 
-mainapp/migrations/**
+home/migrations/**
 /migrations
 /migrations/
 /migrations/__init__.py
