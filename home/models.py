@@ -43,3 +43,20 @@ class Prospect(models.Model):
 
     def __str__(self):
         return self.full_name
+
+
+class Document (models.Model):
+    name = models.CharField(max_length=200)
+    link = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+
+class Item(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='items')
+
+    def __str__(self):
+        return self.title

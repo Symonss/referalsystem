@@ -13,7 +13,7 @@ urlpatterns = [
          views.Admin_uSignUpView.as_view(), name='admin_signup'),
     path('accounts/signup/user/<str:code>',
          views.UserSignUpView.as_view(), name='user_signup'),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)

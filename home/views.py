@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.shortcuts import redirect
 from .forms import Admin_uSignUpForm, UserSignUpForm, NewProspectForm
 from django.shortcuts import render
-from .models import User, Prospect
+from .models import User, Prospect, Document, Item
 # from django.utils.decorators import method_decorator
 # from ..decorators import department_required
 from django.urls import reverse_lazy
@@ -13,7 +13,11 @@ from django.views.generic import (
 
 
 def home(request):
-    return render(request, 'home.html', {})
+    items = Item.objects.all()
+    context = {
+        'items': items
+    }
+    return render(request, 'index.html', context)
 
 
 class Admin_uSignUpView(CreateView):
@@ -106,3 +110,24 @@ def decider(request):
         return redirect('agents')
     else:
         return redirect('home')
+
+
+def agents_home(request):
+    documents = Document.objects.all()
+    if request.method == "POST":
+        form = NewProspectForm(request.POST)
+        if form.is_valid():
+            pp = form.save(commit=False)
+            pp.code = request.user.upline
+            pp.agent = request.user
+            pp.save()
+
+            return redirect('agents')
+    form = NewProspectForm()
+
+    context = {
+        'form': form,
+        'documents': documents
+
+    }
+    return render(request, 'agents_home.html', context)

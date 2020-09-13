@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block nav %}
+<a href="{% url 'manage_agents'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
+    <span>Home</span></a>
+<a href="{% url 'manage_agents'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
+    <span>Prospects</span></a>
+<a href="{% url 'logout'%}" class="list-group-item"><i class="fa fa-question-circle"></i>
+    <span>Logout</span></a>
+{% endblock nav %}
+
+
+{% block body %}
+
+
+<div class="contaner">
+    <br>
+
+    <div class="" style="margin-right: 12px;">
+
+        <button type="button" class="btn btn-secondary btn-block" data-toggle="collapse" data-target="#demo">Add
+            Prospects</button>
+        <div id="demo" class="collapse">
+            <br>
+            <div class="container-fluid">
+                <div class="container-fluid">
+
+                    <form method="POST" class="post-form">{% csrf_token %}
+                        {% bootstrap_form form %}
+
+                        <button type="save" class="btn-warning btn-block rounded">Save Prospect</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+        <br>
+
+
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+        <section class="our-blog bg-silver">
+            <div class="container work-process  pb-5 pt-5">
+                <div class="title mb-5 text-center">
+                    <h3>Our <span class="site-color">Process To Earn</span></h3>
+                </div>
+                <!-- ============ step 1 =========== -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="process-step">
+                                        <p class="m-0 p-0">Step</p>
+                                        <h2 class="m-0 p-0">01</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h5>Learn</h5>
+                                    <p><small>First thing is to learn everything about Jubilee insuarance. Understand
+                                            the
+                                            plans well.
+                                        </small></p>
+                                </div>
+                            </div>
+                            <div class="process-line-l"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="process-point-right"></div>
+                    </div>
+                </div>
+                <!-- ============ step 2 =========== -->
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <div class="process-point-left"></div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="process-step">
+                                        <p class="m-0 p-0">Step</p>
+                                        <h2 class="m-0 p-0">02</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h5>Market It!</h5>
+                                    <p><small>Now time to go to social media and spread the word. Tell people about the
+                                            wonderful deal they would get with Jubilee.
+                                        </small></p>
+                                </div>
+                            </div>
+                            <div class="process-line-r"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- ============ step 3 =========== -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="process-step">
+                                        <p class="m-0 p-0">Step</p>
+                                        <h2 class="m-0 p-0">03</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h5>Talk to Prospects</h5>
+                                    <p><small>Once you get your prospects(those who liked the deals). Tell them to
+                                            expect a
+                                            call from Jubilee company.Our Team members will give them a call soon.
+                                        </small></p>
+                                </div>
+                            </div>
+                            <div class="process-line-l"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="process-point-right"></div>
+                    </div>
+                </div>
+                <!-- ============ step 4 =========== -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="process-point-left"></div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="process-box process-right" data-aos="fade-left" data-aos-duration="1000">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="process-step">
+                                        <p class="m-0 p-0">Step</p>
+                                        <h2 class="m-0 p-0">04</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h5>Register them</h5>
+                                    <p><small>Log their names and phone numbers on this system. For our team members to
+                                            be
+                                            able to contact them and make a follow up.
+                                        </small></p>
+                                </div>
+                            </div>
+                            <div class="process-line-r"></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- ============ step 3 =========== -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="process-box process-left" data-aos="fade-right" data-aos-duration="1000">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="process-step">
+                                        <p class="m-0 p-0">Step</p>
+                                        <h2 class="m-0 p-0">05</h2>
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <h5>Wait For Payment</h5>
+                                    <p><small>Depending on the outcome when the deal is closed, you will receive your
+                                            payment.The amount also depends on cover taken by the client.
+                                        </small></p>
+                                </div>
+                            </div>
+                            <div class="process-line-l"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-5">
+                        <div class="process-point-right process-last"></div>
+                    </div>
+                </div>
+                <!-- ============ -->
+            </div>
+        </section>
+        <script>
+            AOS.init();
+        </script>
+    </div>
+    <h2>Documents</h2>
+    <ul>
+        {% for document in documents %}
+
+        {% endfor %}
+        <li><a href="{{document.link}}">About Jubilee</a></li>
+    </ul>
+</div>
+
+
+{% endblock body %}
