@@ -38,7 +38,7 @@
             <div class="container-fluid">
                 <div class="container-fluid">
 
-                    <form method="POST" class="post-form">{% csrf_token %}
+                    <form method="POST" class="post-form" enctype="multipart/form-data">{% csrf_token %}
                         {% bootstrap_form formii %}
 
                         <button type="save" class="btn-warning btn-block rounded">Save Service</button>
