@@ -1,7 +1,7 @@
 
 from django.contrib.auth import login
 from django.shortcuts import redirect
-from .forms import Admin_uSignUpForm, UserSignUpForm, NewProspectForm
+from .forms import *
 from django.shortcuts import render
 from .models import User, Prospect, Document, Item
 # from django.utils.decorators import method_decorator
@@ -67,8 +67,19 @@ def managers(request):
             return redirect('managers')
     form = NewProspectForm()
 
+    if request.method == "POST":
+        formii = NewServiceForm(request.POST, request.FILES)
+        if formii.is_valid():
+            pp2 = formii.save(commit=False)
+
+            pp2.save()
+
+            return redirect('managers')
+    formii = NewServiceForm()
+
     context = {
         'form': form,
+        'formii': formii,
         'prospects': prospects,
     }
     return render(request, 'managers.html', context)
