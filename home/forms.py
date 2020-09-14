@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
-from .models import User, Prospect, Item
+from .models import User, Prospect, Item, Message
 
 
 class Admin_uSignUpForm(UserCreationForm):
@@ -48,4 +48,10 @@ class NewProspectForm(forms.ModelForm):
 class NewServiceForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['title', 'description', 'image']
+        fields = ['title', 'description', 'image', 'doc']
+
+
+class NewMessageForm(forms.ModelForm):
+    class Meta:
+        model = Message
+        fields = ['name', 'subject', 'message']

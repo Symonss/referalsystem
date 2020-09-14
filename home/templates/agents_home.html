@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% block nav %}
-<a href="{% url 'manage_agents'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
+<a href="{% url 'agents-index'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
     <span>Home</span></a>
-<a href="{% url 'manage_agents'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
+<a href="{% url 'agents'%}" class="list-group-item active"><i class="fa fa-credit-card"></i>
     <span>Prospects</span></a>
 <a href="{% url 'logout'%}" class="list-group-item"><i class="fa fa-question-circle"></i>
     <span>Logout</span></a>

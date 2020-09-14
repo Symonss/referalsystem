@@ -14,8 +14,19 @@ from django.views.generic import (
 
 def home(request):
     items = Item.objects.all()
+    if request.method == "POST":
+        formms = NewMessageForm(request.POST)
+        if formms.is_valid():
+            pp22 = formms.save(commit=False)
+
+            pp22.save()
+
+            return redirect('home')
+    formms = NewMessageForm()
+
     context = {
-        'items': items
+        'items': items,
+        'formms': formms
     }
     return render(request, 'index.html', context)
 
@@ -142,3 +153,30 @@ def agents_home(request):
 
     }
     return render(request, 'agents_home.html', context)
+
+
+def changestatus(request, pk):
+    prospect = Prospect.objects.get(id=pk)
+
+    prospect.status = 'initiated'
+    prospect.save()
+
+    return redirect('managers')
+
+
+def approve(request, id):
+    prospect = Prospect.objects.get(id=id)
+
+    prospect.status = 'approved'
+    prospect.save()
+
+    return redirect('managers')
+
+
+def decline(request, it):
+    prospect = Prospect.objects.get(id=it)
+
+    prospect.status = 'declined'
+    prospect.save()
+
+    return redirect('managers')

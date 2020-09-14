@@ -60,12 +60,26 @@
             </thead>
             <tbody>
                 {% for prospect in prospects %}
+
+                {% if prospect.status != "approved" %}
+
+                {% if prospect.status != "declined" %}
+
                 <tr>
                     <td>{{prospect.full_name}}</td>
                     <td>{{prospect.phone}}</td>
                     <td>{{prospect.status}}</td>
-                    <td>Update</td>
+                    {% if prospect.status == "Pending" %}
+                    <td><a href="{% url 'updates' pk=prospect.pk %}" class="btn btn-info">Initiate</a></td>
+                    {% elif prospect.status == "initiated" %}
+                    <td><a class="btn btn-success" href="{% url 'approve' id=prospect.id %}">Approve</a> <a
+                            href="{% url 'decline' it=prospect.pk %}" class="btn btn-warning">Decline</a></td>
+                    {%endif%}
                 </tr>
+                {% endif %}
+
+                {% endif %}
+
                 {% endfor %}
 
             </tbody>

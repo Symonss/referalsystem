@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+{% load bootstrap4 %}
 
 <head>
     <meta charset="utf-8">
@@ -110,6 +111,9 @@ https://templatemo.com/tm-482-strip
                     <div class="tm-white-curve-text">
                         <h2 class="tm-section-header gray-text">{{item.title}}</h2>
                         <p class="thin-font">{{item.descripton}}.</p>
+                        <h4><i> <a href="{{item.doc.url}}" target="_blank"> Read more</a></i> |<a href="#tm-section-4">
+                                Talk to us</a>
+                        </h4>
                     </div>
 
                 </div>
@@ -137,6 +141,9 @@ https://templatemo.com/tm-482-strip
                     <div class="tm-white-curve-text">
                         <h2 class="tm-section-header red-text">{{item.title}}</h2>
                         <p>{{item.description}}</p>
+                        <h6><i> <a href="{{item.doc.url}}" target="_blank"> Get PDF</a></i> |<a href="#tm-section-4">
+                                Talk to us</a>
+                        </h6>
                     </div>
 
                 </div>
@@ -153,34 +160,16 @@ https://templatemo.com/tm-482-strip
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-5 col-xl-6 tm-contact-left">
                     <h2 class="tm-section-header thin-font col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">Send a
                         message</h2>
-                    <form action="index.html" method="post" class="contact-form">
+                    <div class="container-fluid">
+                        <div class="contaner-fluid">
 
-                        <!-- if you need a working contact form script, please follow https://templatemo.com/contact page -->
+                            <form method="POST" class="post-form">{% csrf_token %}
+                                {% bootstrap_form formms %}
 
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xl-6 tm-contact-form-left">
-                            <div class="form-group">
-                                <input type="text" id="contact_name" name="contact_name" class="form-control"
-                                    placeholder="Name" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="email" id="contact_email" name="contact_email" class="form-control"
-                                    placeholder="Email" required />
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="contact_subject" name="contact_subject" class="form-control"
-                                    placeholder="Subject" required />
-                            </div>
+                                <button type="save" class="btn-warning btn-block rounded">Save Prospect</button>
+                            </form>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-12 col-xl-6 tm-contact-form-right">
-                            <div class="form-group">
-                                <textarea id="contact_message" name="contact_message" class="form-control" rows="6"
-                                    placeholder="Message" required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn submit-btn">Send It Now</button>
-                        </div>
-
-                    </form>
+                    </div>
                 </div>
 
                 <div class="tm-white-curve-right col-xs-12 col-sm-6 col-md-6 col-lg-7 col-xl-6">
