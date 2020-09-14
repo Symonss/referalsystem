@@ -111,7 +111,9 @@ https://templatemo.com/tm-482-strip
                     <div class="tm-white-curve-text">
                         <h2 class="tm-section-header gray-text">{{item.title}}</h2>
                         <p class="thin-font">{{item.descripton}}.</p>
-                        <h4><i> <a href="{{item.doc.url}}" target="_blank"> Read more</a></i> |<a href="#tm-section-4">
+                        <h4>{% if item.doc %}<i>
+                                <a href="{{item.doc.url}}" target="_blank"> Read more</a></i>{% endif %} |<a
+                                href="#tm-section-4">
                                 Talk to us</a>
                         </h4>
                     </div>
@@ -141,7 +143,12 @@ https://templatemo.com/tm-482-strip
                     <div class="tm-white-curve-text">
                         <h2 class="tm-section-header red-text">{{item.title}}</h2>
                         <p>{{item.description}}</p>
-                        <h6><i> <a href="{{item.doc.url}}" target="_blank"> Get PDF</a></i> |<a href="#tm-section-4">
+                        <h6>
+                            {% if item.doc %}
+
+
+                            <i> <a href="{{item.doc.url}}" target="_blank"> Get PDF</a></i> {% endif %}<a
+                                href="#tm-section-4">
                                 Talk to us</a>
                         </h6>
                     </div>
