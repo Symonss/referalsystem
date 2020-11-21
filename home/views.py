@@ -44,7 +44,7 @@ class Admin_uSignUpView(CreateView):
         user = form.save(commit=False)
         user = form.save()
         login(self.request, user)
-        return redirect('managers')
+        return redirect('')
 
 
 class UserSignUpView(CreateView):
@@ -61,7 +61,7 @@ class UserSignUpView(CreateView):
         user.upline = self.kwargs['code']
         user = form.save()
         login(self.request, user)
-        return redirect('agents')
+        return redirect('agents-index')
 
 
 def managers(request):
@@ -107,7 +107,7 @@ def agents(request):
             pp.agent = request.user
             pp.save()
 
-            return redirect('agents')
+            return redirect('agents-index')
     form = NewProspectForm()
 
     context = {
