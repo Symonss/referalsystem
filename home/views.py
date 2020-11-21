@@ -127,15 +127,17 @@ def manage_agents(request):
 
 def decider(request):
     if request.user.is_manager:
-        return redirect('managers')
+        return redirect('home')
     elif request.user.is_user:
-        return redirect('agents')
+        return redirect('agents-index')
     else:
         return redirect('home')
 
 
 def agents_home(request):
     documents = Document.objects.all()
+    prospects = Prospect.objects.filter(agent=request.user)
+    print(prospects)
     if request.method == "POST":
         form = NewProspectForm(request.POST)
         if form.is_valid():
@@ -144,15 +146,16 @@ def agents_home(request):
             pp.agent = request.user
             pp.save()
 
-            return redirect('agents')
+            return redirect('agents-index')
     form = NewProspectForm()
 
     context = {
         'form': form,
+        'prospects': prospects,
         'documents': documents
 
     }
-    return render(request, 'agents_home.html', context)
+    return render(request, 'admin/admin1.html', context)
 
 
 def changestatus(request, pk):
@@ -180,3 +183,7 @@ def decline(request, it):
     prospect.save()
 
     return redirect('managers')
+
+
+def tests(request):
+    return render(request, 'admin/admin1.html')

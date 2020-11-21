@@ -30,6 +30,12 @@ class UserSignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'phone', 'password1', 'password2', )
 
+    def __init__(self, *args, **kwargs):
+        super(UserCreationForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
     @transaction.atomic
     def save(self, commit=True):
         user = super().save(commit=False)

@@ -20,9 +20,6 @@ class User(AbstractUser):
             self.invitel = ('refM=' + str(self.id))
         super(User, self).save()
 
-    def __str__(self):
-        return (self.invitel)
-
 
 class Prospect(models.Model):
     STATUS_CHOICES = (
@@ -35,11 +32,15 @@ class Prospect(models.Model):
     full_name = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='Pending')
+        max_length=10, choices=STATUS_CHOICES, default='pending')
     code = models.CharField(max_length=100, null=True, blank=True)
 
     agent = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, blank=True)
+
+    premium = models.CharField(max_length=200, null=True, blank=True)
+    pay = models.IntegerField(null=True, blank=True)
+    is_paid = models.BooleanField(default=False)
 
     def __str__(self):
         return self.full_name
@@ -67,3 +68,6 @@ class Message(models.Model):
     subject = models.CharField(max_length=200)
     name = models.CharField(max_length=200)
     message = models.TextField()
+
+    def __str__(self):
+        return self.subject
